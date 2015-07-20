@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Animal Quiz</title>
+    <meta name='viewport' content='width=device-width, inital-scale=1'>
+    <link rel='stylesheet' type='text/css' href='css/style.css'>
+    <link rel='stylesheet' type='text/css' href='css/bootstrap.min.css'>
+</head>
+
+<body>
+    <nav class='navbar navbar-default'>
+        <div class='navbar-header'>
+            <button data-target='#navbarCollapse' data-toggle='collapse' class='navbar-toggle'>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <a href='#' class='navbar-brand'>Animal Quiz</a>
+        </div>
+        <div id='navbarCollapse' class='collapse navbar-collapse'>
+            <ul class='nav navbar-nav'>
+                <li><a href='#'>Link</a>
+                </li>
+                <li><a href='#'>Link</a>
+                </li>
+                <li><a href='#'>Link</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class='container' id='quiz-content'>
+        <div class='row'>
+            <div class='col-sm-6'>
+                <img class='img-thumbnail center-block' src='http://lorempixel.com/600/800/animals'>
+            </div>
+            <div class='col-sm-6'>
+                <div class='panel panel-primary'>
+                    <div class='panel-heading'>Name this animal:</div>
+                    <div class='panel-body'>
+                        <ul class='list-group'>
+                            <li class='list-group-item'>
+                                <div class='radio'>
+                                    <label>
+                                        <input type='radio' name='answerOptions'> Dog</label>
+                                </div>
+                            </li>
+                            <li class='list-group-item'>
+                                <div class='radio'>
+                                    <label>
+                                        <input type='radio' name='answerOptions'> Cat</label>
+                                </div>
+                            </li>
+                            <li class='list-group-item'>
+                                <div class='radio'>
+                                    <label>
+                                        <input type='radio' name='answerOptions'> Fish</label>
+                                </div>
+                            </li>
+                            <li class='list-group-item'>
+                                <div class='radio'>
+                                    <label>
+                                        <input type='radio' name='answerOptions'> Pizza</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class='panel-footer'>
+                        <button type='submit' class='btn btn-primary btn-block'>Submit</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+    <script src='js/bootstrap.min.js'></script>
+</body>
+
+</html>
