@@ -35,9 +35,9 @@
     <div class='container' id='quiz-content'>
         <div class='row'>
             <div class='col-sm-6'>
-                <img class='img-thumbnail center-block' src='http://lorempixel.com/600/800/animals'>
+                <img class='img-thumbnail center-block' src='http://lorempixel.com/500/500/animals'>
             </div>
-            <div class='col-sm-6'>
+            <div class='col-sm-4'>
                 <div class='panel panel-primary'>
                     <div class='panel-heading'>Name this animal:</div>
                     <div class='panel-body'>
@@ -66,6 +66,12 @@
                                         <input type='radio' name='answerOptions'> Pizza</label>
                                 </div>
                             </li>
+                            <li class='list-group-item'>
+                                <div class='radio'>
+                                    <label>
+                                        <input type='radio' name='answerOptions'> Bird</label>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     <div class='panel-footer'>
@@ -73,7 +79,80 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class='row'>
 
+        </div>
+        <div class="row shop-tracking-status">
+            <div class="order-status">
+
+                <div class="order-status-timeline">
+                    <!-- class names: c0 c1 c2 c3 and c4 -->
+                    <div class="order-status-timeline-completion c3"></div>
+                </div>
+
+                <div class="image-order-status image-order-status-new active img-circle">
+                    <span class="status">Accepted</span>
+                    <div class="icon"></div>
+                </div>
+                <div class="image-order-status image-order-status-active active img-circle">
+                    <span class="status">In progress</span>
+                    <div class="icon"></div>
+                </div>
+                <div class="image-order-status image-order-status-intransit active img-circle">
+                    <span class="status">Shipped</span>
+                    <div class="icon"></div>
+                </div>
+                <div class="image-order-status image-order-status-delivered active img-circle">
+                    <span class="status">Delivered</span>
+                    <div class="icon"></div>
+                </div>
+                <div class="image-order-status image-order-status-completed active img-circle">
+                    <span class="status">Completed</span>
+                    <div class="icon"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row bs-wizard">
+            <div class="col-xs-3 bs-wizard-step complete">
+                <div class="text-center bs-wizard-stepnum">Step 1</div>
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <a href="#" class="bs-wizard-dot"></a>
+                <div class="bs-wizard-info text-center">Lorem ipsum dolor sit amet.</div>
+            </div>
+
+            <div class="col-xs-3 bs-wizard-step complete">
+                <!-- complete -->
+                <div class="text-center bs-wizard-stepnum">Step 2</div>
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <a href="#" class="bs-wizard-dot"></a>
+                <div class="bs-wizard-info text-center">Nam mollis tristique erat vel tristique. Aliquam erat volutpat. Mauris et vestibulum nisi. Duis molestie nisl sed scelerisque vestibulum. Nam placerat tristique placerat</div>
+            </div>
+
+            <div class="col-xs-3 bs-wizard-step active">
+                <!-- complete -->
+                <div class="text-center bs-wizard-stepnum">Step 3</div>
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <a href="#" class="bs-wizard-dot"></a>
+                <div class="bs-wizard-info text-center">Integer semper dolor ac auctor rutrum. Duis porta ipsum vitae mi bibendum bibendum</div>
+            </div>
+
+            <div class="col-xs-3 bs-wizard-step disabled">
+                <!-- active -->
+                <div class="text-center bs-wizard-stepnum">Step 4</div>
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <a href="#" class="bs-wizard-dot"></a>
+                <div class="bs-wizard-info text-center"> Curabitur mollis magna at blandit vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</div>
+            </div>
         </div>
     </div>
 
