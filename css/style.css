@@ -91,6 +91,10 @@
     width: 50%;
 }
 
+.progress-status .progress-step.active:last-child .progress .progress-bar {
+    width: 100%;
+}
+
 .progress-status .progress-step.correct .progress-dot {
     background-color: #17aa17;
     border-color: #035f03;
