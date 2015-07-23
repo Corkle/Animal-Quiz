@@ -1,36 +1,36 @@
 var quizArray = [{
-        img: '../images/1.png',
+        img: '/images/1.png',
         question: 'What is the name of this animal?',
         choices: ['Dog', 'Cat', 'Fish', 'Pizza', 'Bird'],
         answerIndex: 4
 },
     {
-        img: '../images/2.png',
+        img: '/images/2.png',
         question: 'How do you spell the number 4?',
         choices: ['One', 'Two', 'Three', 'Four', 'Five'],
         answerIndex: 3
 },
     {
-        img: '../images/3.png',
+        img: '/images/3.png',
         question: 'What is my favorite color?',
         choices: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
         answerIndex: 2
 },
     {
-        img: '../images/4.png',
+        img: '/images/4.png',
         question: 'Which one is no?',
         choices: ['Yes', 'No', 'Yes', 'Yes', 'Yes'],
         answerIndex: 1
 },
     {
-        img: '../images/5.png',
+        img: '/images/5.png',
         question: 'What year is it?',
         choices: ['2015', '1984', '2001', '1991', '1601'],
         answerIndex: 0
 
 },
     {
-        img: '../images/6.png',
+        img: '/images/6.png',
         question: 'What year is it next year?',
         choices: ['2015', '1984', '2001', '1991', '1601'],
         answerIndex: 2
