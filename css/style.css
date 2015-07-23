@@ -87,7 +87,7 @@
     width: 100%;
 }
 
-.progress-status .progress-step.active .progress .progress-bar {
+.progress-status .progress-step.active:not(:first-of-type) .progress .progress-bar {
     width: 50%;
 }
 
