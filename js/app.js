@@ -28,14 +28,16 @@ var quizArray = [{
         choices: ['2015', '1984', '2001', '1991', '1601'],
         answerIndex: 0
 
-},
+}
+                 ,
     {
         img: 'images/6.png',
         question: 'What year is it next year?',
         choices: ['2015', '1984', '2001', '1991', '1601'],
         answerIndex: 2
 
-    }]
+    }
+                ]
 
 function main() {
     var quizCtrl = new QuizCtrl();
@@ -86,12 +88,11 @@ function QuizCtrl() {
     }
 
     function updateProgress(num) {        
-        $('#quiz-progress .progress-step').eq(num - 1).removeClass('active');
-        for (i = 0; i < num; i++) {
-            $('#quiz-progress .progress-step').eq(i).addClass('complete');
+        if (num > 0) {
+            $('#quiz-progress .progress-step').eq(num - 1).removeClass('active');
+            $('#quiz-progress .progress-step').eq(num - 1).addClass('complete');
         }
         $('#quiz-progress .progress-step').eq(num).addClass('active');
-
     }
 }
 
@@ -117,7 +118,7 @@ function Quiz() {
             correctAnswers++;
             var isCorrect = true;
         } else
-            var isCorrect =  false;
+            var isCorrect = false;
         currentQuestion++;
         return isCorrect;
     }

@@ -85,6 +85,11 @@
 
 .progress-status .progress-step.complete .progress .progress-bar {
     width: 100%;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
 }
 
 .progress-status .progress-step.active:not(:first-of-type) .progress .progress-bar {
@@ -124,7 +129,9 @@
     display: block;
 }
 
+.progress .progressbar {
 
+}
 
 
 
