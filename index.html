@@ -38,50 +38,51 @@
                 <img id='quiz-question-image' class='img-thumbnail center-block' src='http://lorempixel.com/500/500/animals'>
             </div>
             <div class='col-sm-4'>
-                <div class='panel panel-primary'>
+                <form id='quiz-panel' class='panel panel-primary'>
                     <div id='quiz-question' class='panel-heading'>Name this animal:</div>
                     <div class='panel-body'>
                         <ul class='list-group'>
                             <li id='quiz-choice-1' class='list-group-item'>
                                 <div class='radio'>
                                     <label>
-                                        <input type='radio' name='answerOptions'> Dog</label>
+                                        <input type='radio' name='answerOptions' value='0'> Dog</label>
                                 </div>
                             </li>
                             <li id='quiz-choice-2' class='list-group-item'>
                                 <div class='radio'>
                                     <label>
-                                        <input type='radio' name='answerOptions'> Cat</label>
+                                        <input type='radio' name='answerOptions' value='1'> Cat</label>
                                 </div>
                             </li>
                             <li id='quiz-choice-3' class='list-group-item'>
                                 <div class='radio'>
                                     <label>
-                                        <input type='radio' name='answerOptions'> Fish</label>
+                                        <input type='radio' name='answerOptions' value='2'> Fish</label>
                                 </div>
                             </li>
                             <li id='quiz-choice-4' class='list-group-item'>
                                 <div class='radio'>
                                     <label>
-                                        <input type='radio' name='answerOptions'> Pizza</label>
+                                        <input type='radio' name='answerOptions' value='3'> Pizza</label>
                                 </div>
                             </li>
                             <li id='quiz-choice-5' class='list-group-item'>
                                 <div class='radio'>
                                     <label>
-                                        <input type='radio' name='answerOptions'> Bird</label>
+                                        <input type='radio' name='answerOptions' value='4'> Bird</label>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div class='panel-footer'>
-                        <button type='submit' id='quiz-submit-button' class='btn btn-primary btn-block'>Submit</button>
+                        <button type='submit' form='quiz-panel' id='quiz-submit-button' class='btn btn-primary btn-block'>Submit</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <div class='row'>
             <div id='quiz-progress' class='progress-status col-sm-8 col-sm-offset-2'>
+<!--
                 <div class='progress-step complete correct'>                  
                     <div class='progress'>
                         <div class='progress-bar'></div>
@@ -127,6 +128,7 @@
                         <span class='glyphicon glyphicon-remove'></span>
                     </div>
                 </div>          
+-->
             </div>
         </div>
         
