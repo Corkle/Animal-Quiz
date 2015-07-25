@@ -31,50 +31,59 @@
         </div>
     </nav>
 
+    <div class='container' id='quiz-start-section'>
+        <div class='row'>
+            <div class='col-sm-12'>
+                
+            </div>
+        </div>
+    </div>
+    
 
     <div class='container' id='quiz-content'>
         <div class='row vcenter'>
             <div class='col-sm-6 col-sm-offset-1'>
-                <img id='quiz-question-image' class='img-thumbnail center-block' src='http://lorempixel.com/500/500/animals'>
+                <img id='quiz-question-image' class='img-thumbnail center-block'>
             </div>
             <div class='col-sm-4'>
                 <form id='quiz-panel' class='panel panel-primary'>
-                    <div id='quiz-question' class='panel-heading'>Name this animal:</div>
+                    <div id='quiz-question' class='panel-heading'></div>
                     <div class='panel-body'>
                         <ul class='list-group'>
                             <li id='quiz-choice-1' class='list-group-item'>
                                 <div class='radio'>
-                                    <label>
-                                        <input type='radio' name='answerOptions' value='0'> Dog</label>
+                                    <label></label>
                                 </div>
                             </li>
                             <li id='quiz-choice-2' class='list-group-item'>
                                 <div class='radio'>
-                                    <label>
-                                        <input type='radio' name='answerOptions' value='1'> Cat</label>
+                                    <label></label>
                                 </div>
                             </li>
                             <li id='quiz-choice-3' class='list-group-item'>
                                 <div class='radio'>
-                                    <label>
-                                        <input type='radio' name='answerOptions' value='2'> Fish</label>
+                                    <label></label>
                                 </div>
                             </li>
                             <li id='quiz-choice-4' class='list-group-item'>
                                 <div class='radio'>
-                                    <label>
-                                        <input type='radio' name='answerOptions' value='3'> Pizza</label>
+                                    <label></label>
                                 </div>
                             </li>
                             <li id='quiz-choice-5' class='list-group-item'>
                                 <div class='radio'>
                                     <label>
-                                        <input type='radio' name='answerOptions' value='4'> Bird</label>
+<!--                                        <input type='radio' name='answerOptions' value='4'> Bird-->
+                                        </label>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div class='panel-footer'>
+                        <div id='alert-submit-no-answer' class='alert alert-danger fade in' style='display: none'>
+                            <a href='#' class='close' data-hide='alert'>&times;</a>
+                            <strong>Error!</strong> Choose an answer from the above choices.
+                        </div>
                         <button type='submit' form='quiz-panel' id='quiz-submit-button' class='btn btn-primary btn-block'>Submit</button>
                     </div>
                 </form>
