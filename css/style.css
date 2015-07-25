@@ -1,3 +1,17 @@
+body *{
+    font-family: 'Raleway', sans-serif;
+}
+
+#quiz-section h1{
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+#quiz-section h3 {
+    margin: 30px auto;
+}
+
 #quiz-content img {
     max-width: 85%;
     margin-top: 20px auto;
@@ -5,6 +19,12 @@
 
 #quiz-content .panel {
     margin-top: 20px;
+}
+
+#quiz-panel #quiz-submit-button,
+#quiz-panel .panel-heading,
+#quiz-panel .panel-body label {
+    font-weight: 600;
 }
 
 .panel-body .radio {
@@ -19,7 +39,7 @@
 .progress-status {
     display: block;
     font-size: 0;
-    margin: 30px auto;
+    margin: 0 auto;
     overflow: hidden;
 }
 
@@ -133,7 +153,10 @@
 
 }
 
-
+.col-center {
+    text-align: center;
+    margin: 0 auto;
+}
 
 @media (min-width: 768px) {
     .vcenter {

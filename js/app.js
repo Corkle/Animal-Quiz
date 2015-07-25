@@ -48,7 +48,6 @@ function QuizCtrl() {
 
     initializeProgressBar(currentQuiz.getQuizLength());
     loadQuestion(currentQuiz.getCurrentQuizData());
-    updateProgress(currentQuiz.CurrentQuestion());
 
     $('#quiz-panel')
         .on('submit', function (e) {
@@ -56,18 +55,47 @@ function QuizCtrl() {
                 $('#alert-submit-no-answer').show();
                 return false;
             } else {
+                $('#alert-submit-no-answer').hide();
                 var userAnswer = $('#quiz-panel input[name=answerOptions]:checked').val()
-                submitAnswer(currentQuiz.submitAnswer(userAnswer));
-                loadQuestion(currentQuiz.getCurrentQuizData());
-                updateProgress(currentQuiz.CurrentQuestion());
+                scoreAnswer(currentQuiz.submitAnswer(userAnswer));
+                if (currentQuiz.quizCompleted()) {
+                    showQuizScore(currentQuiz.getQuizScore());
+                } else {
+                    loadQuestion(currentQuiz.getCurrentQuizData());
+                    updateProgress(currentQuiz.CurrentQuestion());
+                }
             }
             e.preventDefault();
         })
         .on('click', '[data-hide]', function () {
             $('.' + $(this).attr('data-hide')).hide();
         })
+    $('#start-quiz-container')
+        .on('click', '#start-quiz-btn', function () {
+            $('#start-quiz-container').hide();
+            $('#quiz-content').show();
+        })
+    
+    $('#quiz-score-container')
+    .on('click', '#retry-quiz-btn', function () {
+        location.reload();
+    })
 
-    function submitAnswer(isCorrect) {
+    function showQuizScore(score) {
+        $('#quiz-submit-button').attr('disabled', 'disabled');
+        $('#quiz-body').hide();
+        $('#quiz-score-container').show();
+        $('#quiz-progress .progress-step:last-child').removeClass('active');
+        $('#quiz-progress .progress-step:last-child').addClass('complete');
+        $('#quiz-score').text(score + '%');
+        if (score >= 70) {
+            $('#quiz-score-text').text('Woah, you certainly know your animals!');
+        } else {
+            $('#quiz-score-text').text('You may want to brush up on your animal facts. Try again?');
+        }
+    }
+
+    function scoreAnswer(isCorrect) {
         if (isCorrect) {
             $('#quiz-progress .progress-step.active').addClass('correct');
         } else {
@@ -76,10 +104,10 @@ function QuizCtrl() {
     }
 
     function loadQuestion(quizData) {
-        $('#quiz-question-image').attr('src', quizData.img);
-        $('#quiz-question').text(quizData.question);
-        for (var i = 0; i < quizData.choices.length; i++) {
-            $('#quiz-choice-' + (i + 1) + ' label').html('<input type="radio" name="answerOptions" value="' + i + '"> ' + quizData.choices[i]);
+        $('#quiz-question-image').attr('src', quizData.quizArray.img);
+        $('#quiz-question').text('#' + quizData.questionNum + ': ' + quizData.quizArray.question);
+        for (var i = 0; i < quizData.quizArray.choices.length; i++) {
+            $('#quiz-choice-' + (i + 1) + ' label').html('<input type="radio" name="answerOptions" value="' + i + '"> ' + quizData.quizArray.choices[i]);
         }
     }
 
@@ -89,6 +117,7 @@ function QuizCtrl() {
             $('#quiz-progress').append('<div class="progress-step"><div class="progress"><div class="progress-bar"></div></div><div class="progress-dot"><span class="glyphicon glyphicon-ok"></span><span class="glyphicon glyphicon-remove"></span></div></div>');
         }
         $('#quiz-progress .progress-step').width(100 / numQuestions + '%');
+        $('#quiz-progress .progress-step').eq(0).addClass('active');
     }
 
     function updateProgress(num) {
@@ -109,12 +138,17 @@ function Quiz() {
 
     var correctAnswers = 0;
     var quizData = quizArray; //Loads questions array
+    var quizLength = quizData.length;
 
     this.getCurrentQuizData = function () {
-        return quizData[currentQuestion];
+        var currentQuizData = {
+            quizArray: quizData[currentQuestion],
+            questionNum: currentQuestion + 1
+        }
+        return currentQuizData;
     }
     this.getQuizLength = function () {
-        return quizData.length;
+        return quizLength;
     }
 
     this.submitAnswer = function (userAnswer) {
@@ -125,6 +159,18 @@ function Quiz() {
             var isCorrect = false;
         currentQuestion++;
         return isCorrect;
+    }
+
+    this.quizCompleted = function () {
+        if (currentQuestion >= quizLength)
+            return true;
+        else
+            return false;
+    }
+
+    this.getQuizScore = function () {
+        var score = Math.round(correctAnswers / quizLength * 100);
+        return score;
     }
 }
 
