@@ -41,13 +41,9 @@ var quizArray = [{
 
 function main() {
     var quizCtrl = new QuizCtrl();
-}
-
-function QuizCtrl() {
-    var currentQuiz = new Quiz();
-
-    initializeProgressBar(currentQuiz.getQuizLength());
-    loadQuestion(currentQuiz.getCurrentQuizData());
+    
+    quizCtrl.initializeProgressBar();
+    quizCtrl.loadQuestion();
 
     $('#quiz-panel')
         .on('submit', function (e) {
@@ -57,12 +53,12 @@ function QuizCtrl() {
             } else {
                 $('#alert-submit-no-answer').hide();
                 var userAnswer = $('#quiz-panel input[name=answerOptions]:checked').val()
-                scoreAnswer(currentQuiz.submitAnswer(userAnswer));
-                if (currentQuiz.quizCompleted()) {
-                    showQuizScore(currentQuiz.getQuizScore());
+                quizCtrl.scoreAnswer(userAnswer);
+                if (quizCtrl.quizCompleted()) {
+                    quizCtrl.showQuizScore();
                 } else {
-                    loadQuestion(currentQuiz.getCurrentQuizData());
-                    updateProgress(currentQuiz.CurrentQuestion());
+                    quizCtrl.loadQuestion();
+                    quizCtrl.updateProgress();
                 }
             }
             e.preventDefault();
@@ -70,18 +66,31 @@ function QuizCtrl() {
         .on('click', '[data-hide]', function () {
             $('.' + $(this).attr('data-hide')).hide();
         })
+    
     $('#start-quiz-container')
         .on('click', '#start-quiz-btn', function () {
             $('#start-quiz-container').hide();
             $('#quiz-content').show();
         })
-    
-    $('#quiz-score-container')
-    .on('click', '#retry-quiz-btn', function () {
-        location.reload();
-    })
 
-    function showQuizScore(score) {
+    $('#quiz-score-container')
+        .on('click', '#retry-quiz-btn', function () {
+            location.reload();
+        })
+}
+
+function QuizCtrl() {
+    var currentQuiz = new Quiz();
+
+    this.quizCompleted = function () {
+        if (currentQuiz.quizCompleted())
+            return true;
+        else
+            return false;
+    }
+    
+    this.showQuizScore = function () {
+        var score = currentQuiz.getQuizScore()
         $('#quiz-submit-button').attr('disabled', 'disabled');
         $('#quiz-body').hide();
         $('#quiz-score-container').show();
@@ -95,15 +104,16 @@ function QuizCtrl() {
         }
     }
 
-    function scoreAnswer(isCorrect) {
-        if (isCorrect) {
+    this.scoreAnswer = function (answer) {
+        if (currentQuiz.submitAnswer(answer)) {
             $('#quiz-progress .progress-step.active').addClass('correct');
         } else {
             $('#quiz-progress .progress-step.active').addClass('incorrect');
         }
     }
 
-    function loadQuestion(quizData) {
+    this.loadQuestion = function () {
+        var quizData = currentQuiz.getCurrentQuizData()
         $('#quiz-question-image').attr('src', quizData.quizArray.img);
         $('#quiz-question').text('#' + quizData.questionNum + ': ' + quizData.quizArray.question);
         for (var i = 0; i < quizData.quizArray.choices.length; i++) {
@@ -111,16 +121,19 @@ function QuizCtrl() {
         }
     }
 
-    function initializeProgressBar(numQuestions) {
+    this.initializeProgressBar = function () {
+    var numQuestions = currentQuiz.getQuizLength();
         $('#quiz-progress').children().remove();
-        for (i = 0; i < numQuestions; i++) {
+        for (i = 0; i < numQuestions;
+        i++) {
             $('#quiz-progress').append('<div class="progress-step"><div class="progress"><div class="progress-bar"></div></div><div class="progress-dot"><span class="glyphicon glyphicon-ok"></span><span class="glyphicon glyphicon-remove"></span></div></div>');
         }
         $('#quiz-progress .progress-step').width(100 / numQuestions + '%');
         $('#quiz-progress .progress-step').eq(0).addClass('active');
-    }
+        }
 
-    function updateProgress(num) {
+    this.updateProgress = function () {
+        var num = currentQuiz.CurrentQuestion();        
         if (num > 0) {
             $('#quiz-progress .progress-step').eq(num - 1).removeClass('active');
             $('#quiz-progress .progress-step').eq(num - 1).addClass('complete');
