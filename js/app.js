@@ -52,12 +52,6 @@ function main() {
                 $('#alert-submit-no-answer').hide();
                 var userAnswer = $('#quiz-panel input[name=answerOptions]:checked').val()
                 quizCtrl.scoreAnswer(userAnswer);
-                if (quizCtrl.quizCompleted()) {
-                    quizCtrl.showQuizScore();
-                } else {
-                    quizCtrl.loadQuestion();
-                    quizCtrl.updateProgress();
-                }
             }
             e.preventDefault();
         })
@@ -75,6 +69,16 @@ function main() {
         .on('click', '#retry-quiz-btn', function () {
             location.reload();
         })
+    
+    $('#score-answer-modal')
+    .on('hidden.bs.modal', function() {
+        if (quizCtrl.quizCompleted()) {
+            quizCtrl.showQuizScore();
+        } else {
+            quizCtrl.loadQuestion();
+            quizCtrl.updateProgress();
+        }
+    })
 }
 
 function QuizCtrl() {
@@ -105,9 +109,12 @@ function QuizCtrl() {
     this.scoreAnswer = function (answer) {
         if (currentQuiz.submitAnswer(answer)) {
             $('#quiz-progress .progress-step.active').addClass('correct');
+            $('#score-answer-modal .modal-title').text('Correct!');
         } else {
             $('#quiz-progress .progress-step.active').addClass('incorrect');
+            $('#score-answer-modal .modal-title').text('Incorrect');
         }
+        $('#score-answer-modal').modal('show');
     }
 
     this.loadQuestion = function () {
